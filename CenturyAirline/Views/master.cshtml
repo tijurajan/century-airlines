@@ -1,0 +1,23 @@
+﻿@inherits UmbracoViewPage
+@{
+	Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en" ng-app="adb">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Century Airlines</title>
+</head>
+<body>
+    @{ Html.RenderAction("RenderLogin", "Auth"); }
+    <hr />
+    @RenderBody()
+
+    <script type="text/javascript" src="Scripts/polyfills.js"></script>
+    <script type="text/javascript" src="Scripts/main.js"></script>   
+    @* <link rel="stylesheet" href="~/css/main.min.css" />*@
+</body>
+</html>

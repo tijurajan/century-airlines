@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.27130.2010
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CenturyAirline", "CenturyAirline\CenturyAirline.csproj", "{B89B0ED6-4996-49FB-8463-50E2E6B70DC3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CenturyAirline.Core", "CenturyAirline.Core\CenturyAirline.Core.csproj", "{7A095FFC-A266-4E8D-BD5B-8C980F7A3CB6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{B89B0ED6-4996-49FB-8463-50E2E6B70DC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B89B0ED6-4996-49FB-8463-50E2E6B70DC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B89B0ED6-4996-49FB-8463-50E2E6B70DC3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7A095FFC-A266-4E8D-BD5B-8C980F7A3CB6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A095FFC-A266-4E8D-BD5B-8C980F7A3CB6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A095FFC-A266-4E8D-BD5B-8C980F7A3CB6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A095FFC-A266-4E8D-BD5B-8C980F7A3CB6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
