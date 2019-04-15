@@ -5,6 +5,7 @@ using System.Web.Mvc;
 using System.Web.Security;
 using Umbraco.Web.Mvc;
 using CenturyAirline.Models;
+using Umbraco.Core.Services;
 
 namespace CenturyAirline.Controllers
 {
@@ -27,6 +28,8 @@ namespace CenturyAirline.Controllers
                     UrlHelper myHelper = new UrlHelper(HttpContext.Request.RequestContext);
                     if (myHelper.IsLocalUrl(returnUrl))
                     {
+                        
+                       
                         return Redirect(returnUrl);
                     }
                     else

@@ -15,9 +15,13 @@
     @{ Html.RenderAction("RenderLogin", "Auth"); }
     <hr />
     @RenderBody()
-
+    <script type="text/javascript" src="Scripts/runtime.js"></script>
+    <script type="text/javascript" src="Scripts/es2015-polyfills.js" nomodule></script>
     <script type="text/javascript" src="Scripts/polyfills.js"></script>
-    <script type="text/javascript" src="Scripts/main.js"></script>   
+    <script type="text/javascript" src="Scripts/styles.js"></script>
+    <script type="text/javascript" src="Scripts/scripts.js"></script>
+    <script type="text/javascript" src="Scripts/vendor.js"></script>
+    <script type="text/javascript" src="Scripts/main.js"></script>
     @* <link rel="stylesheet" href="~/css/main.min.css" />*@
 </body>
 </html>
