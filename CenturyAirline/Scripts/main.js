@@ -85,7 +85,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<app-header></app-header>\n<router-outlet></router-outlet>\n<app-footer></app-footer>\n"
+module.exports = "<app-header></app-header>\n<router-outlet></router-outlet>\n\n<app-footer></app-footer>\n"
 
 /***/ }),
 
@@ -143,6 +143,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _flight_list_flight_list_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./flight-list/flight-list.component */ "./src/app/flight-list/flight-list.component.ts");
 /* harmony import */ var _header_header_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./header/header.component */ "./src/app/header/header.component.ts");
 /* harmony import */ var _footer_footer_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./footer/footer.component */ "./src/app/footer/footer.component.ts");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+
 
 
 
@@ -166,12 +168,13 @@ var AppModule = /** @class */ (function () {
                 _flight_create_flight_create_component__WEBPACK_IMPORTED_MODULE_8__["FlightCreateComponent"],
                 _flight_list_flight_list_component__WEBPACK_IMPORTED_MODULE_9__["FlightListComponent"],
                 _header_header_component__WEBPACK_IMPORTED_MODULE_10__["HeaderComponent"],
-                _footer_footer_component__WEBPACK_IMPORTED_MODULE_11__["FooterComponent"]
+                _footer_footer_component__WEBPACK_IMPORTED_MODULE_11__["FooterComponent"],
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
                 _app_routing_module__WEBPACK_IMPORTED_MODULE_5__["AppRoutingModule"],
-                _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormsModule"]
+                _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormsModule"],
+                _angular_common_http__WEBPACK_IMPORTED_MODULE_12__["HttpClientModule"]
             ],
             providers: [{ provide: _angular_common__WEBPACK_IMPORTED_MODULE_3__["APP_BASE_HREF"], useValue: '/' }],
             bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_6__["AppComponent"]]
@@ -196,28 +199,39 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DataService", function() { return DataService; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
 
 
+
+
+var httpOptions = {
+    headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
+        'Content-Type': 'application/json',
+        'Authorization': 'my-auth-token'
+    })
+};
 var DataService = /** @class */ (function () {
-    function DataService() {
+    function DataService(http) {
+        this.http = http;
         this.flights = [
-            { id: 1, name: "Contact 001", description: "Contact 001 des", email: "c001@email.com" },
-            { id: 2, name: "Contact 002", description: "Contact 002 des", email: "c002@email.com" },
-            { id: 3, name: "Contact 003", description: "Contact 003 des", email: "c003@email.com" },
-            { id: 4, name: "Contact 004", description: "Contact 004 des", email: "c004@email.com" }
+            { id: 1, name: "Singapore Airlines", number: "SL317", description: "Welcome to Singapore", capacity: 238 },
         ];
     }
-    DataService.prototype.getFlights = function () {
-        return this.flights;
+    DataService.prototype.getFlight = function () {
+        return this.http.get('/umbraco/api/flightsdata/getflights');
     };
+    //public getFlights():Array<{id, name,number, description, capacity}>{
+    //  return this.flights;
+    //}
     DataService.prototype.createFlight = function (flight) {
-        this.flights.push(flight);
+        return this.http.post('/umbraco/api/flightsdata/createflight', flight, httpOptions)
+            .pipe();
     };
     DataService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
             providedIn: 'root'
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
     ], DataService);
     return DataService;
 }());
@@ -244,7 +258,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\" style=\"margin-top: 70px;\">\n\n  <div class=\"row\">\n\n    <div class=\"col-sm-8 offset-sm-2\">\n\n      <div>\n        <form>\n          <div class=\"form-group\">\n            <label for=\"id\">ID</label>\n            <input [(ngModel)]=\"flight.id\" type=\"text\" name=\"id\" class=\"form-control\" id=\"id\" aria-describedby=\"idHelp\" placeholder=\"Enter ID\">\n            <small id=\"idHelp\" class=\"form-text text-muted\">Enter your contact’s ID</small>\n\n            <label for=\"name\">Contact Name</label>\n            <input [(ngModel)]=\"flight.name\" type=\"text\" name=\"name\" class=\"form-control\" id=\"name\" aria-describedby=\"nameHelp\" placeholder=\"Enter your name\">\n            <small id=\"nameHelp\" class=\"form-text text-muted\">Enter your contact’s name</small>\n\n            <label for=\"email\">Contact Email</label>\n            <input [(ngModel)]=\"flight.email\" type=\"text\" name=\"email\" class=\"form-control\" id=\"email\" aria-describedby=\"emailHelp\"\n              placeholder=\"Enter your email\">\n            <small id=\"nameHelp\" class=\"form-text text-muted\">Enter your contact’s email</small>\n\n            <label for=\"description\">Contact Description</label>\n            <textarea [(ngModel)]=\"flight.description\" name=\"description\" class=\"form-control\" id=\"description\" aria-describedby=\"descHelp\">\n                      </textarea>\n            <small id=\"descHelp\" class=\"form-text text-muted\">Enter your contact’s description</small>\n\n          </div>\n        </form>\n        <button class=\"btn btn-primary\" (click)=\"createFlight()\">Create flight</button>\n      </div>\n    </div>\n  </div>\n</div>\n"
+module.exports = "<div class=\"container\" style=\"margin-top: 70px;\">\n\n  <div class=\"row\">\n\n    <div class=\"col-sm-8 offset-sm-2\">\n\n      <div>\n        <form>\n          <div class=\"form-group\">\n            <label for=\"id\">ID</label>\n            <input [(ngModel)]=\"flight.id\" type=\"text\" name=\"id\" class=\"form-control\" id=\"id\" aria-describedby=\"idHelp\" placeholder=\"Enter ID\">\n            <small id=\"idHelp\" class=\"form-text text-muted\">Enter your flight ID</small>\n\n            <label for=\"name\">Flight Name</label>\n            <input [(ngModel)]=\"flight.name\" type=\"text\" name=\"name\" class=\"form-control\" id=\"name\" aria-describedby=\"nameHelp\" placeholder=\"Enter flight name\">\n            <small id=\"nameHelp\" class=\"form-text text-muted\">Enter your flight name</small>\n            \n            <label for=\"name\">Flight Number</label>\n            <input [(ngModel)]=\"flight.number\" type=\"text\" name=\"number\" class=\"form-control\" id=\"name\" aria-describedby=\"numberHelp\" placeholder=\"Enter flight number\">\n            <small id=\"numberHelp\" class=\"form-text text-muted\">Enter your flight number</small>\n           \n            <label for=\"email\">Passenger Capacity</label>\n            <input [(ngModel)]=\"flight.email\" type=\"number\" name=\"capacity\" class=\"form-control\" id=\"capacity\" aria-describedby=\"capacityHelp\"\n              placeholder=\"Enter passenger capacity\">\n            <small id=\"capacityHelp\" class=\"form-text text-muted\">Enter passenger capacity</small>\n\n            <label for=\"description\">Flight Description</label>\n            <textarea [(ngModel)]=\"flight.description\" name=\"description\" class=\"form-control\" id=\"description\" aria-describedby=\"descHelp\">\n                      </textarea>\n            <small id=\"descHelp\" class=\"form-text text-muted\">Enter your flight description</small>\n\n          </div>\n        </form>\n        <button class=\"btn btn-primary\" (click)=\"createFlight()\">Create flight</button>\n      </div>\n    </div>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -267,14 +281,15 @@ __webpack_require__.r(__webpack_exports__);
 var FlightCreateComponent = /** @class */ (function () {
     function FlightCreateComponent(dataService) {
         this.dataService = dataService;
-        this.flight = { id: null, name: "", description: "", email: "" };
+        this.flight = { id: null, name: "", number: "", description: "", capacity: null };
     }
     FlightCreateComponent.prototype.ngOnInit = function () {
     };
     FlightCreateComponent.prototype.createFlight = function () {
         console.log(this.flight);
-        this.dataService.createFlight(this.flight);
-        this.flight = { id: null, name: "", description: "", email: "" };
+        this.dataService.createFlight(this.flight)
+            .subscribe(function (x) { return console.log(x); });
+        this.flight = { id: null, name: "", number: "", description: "", capacity: null };
     };
     FlightCreateComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -309,7 +324,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\" style=\"margin-top: 70px;\">\n  <table class=\"table table-hover\">\n    <thead>\n      <tr>\n        <th>#</th>\n        <th>Name</th>\n        <th>Email</th>\n        <th>Actions</th>\n      </tr>\n    </thead>\n    <tbody>\n      <tr *ngFor=\"let flight of flights\">\n\n        <td>{{ flight.id }}</td>\n        <td> {{ flight.name }}</td>\n        <td> {{ flight.email }}</td>\n        <td>\n          <button class=\"btn btn-primary\" (click)=\"selectFlight(flight)\"> Show details</button>\n        </td>\n      </tr>\n    </tbody>\n  </table>\n  <div class=\"card text-center\" *ngIf=\"selectedFlight\">\n      <div class=\"card-header\">\n        # {{selectedFlight.id}}\n      </div>\n      <div class=\"card-block\">\n        <h4 class=\"card-title\">{{selectedFlight.name}}</h4>\n        <p class=\"card-text\">\n          {{selectedFlight.description}}\n        </p>    \n      </div>\n\n    </div>\n</div>"
+module.exports = "<div class=\"container\" style=\"margin-top: 70px;\">\n  <table class=\"table table-hover\">\n    <thead>\n      <tr>\n        \n        <th>Name</th>\n        <th>Flight No#</th>\n        <th>Capacity</th>\n        <th>From</th>\n        <th>Deprt.</th>\n        <th>To</th>\n        <th>Arr.</th>\n        <th>Actions</th>\n      </tr>\n    </thead>\n    <tbody>\n      <tr *ngFor=\"let flight of flights\">\n\n        <td>{{ flight.name }}</td>\n        <td> {{ flight.number }}</td>\n        <td> {{ flight.capacity }}</td>\n        <td> {{ flight.departurecity }}</td>\n        <td> {{ flight.starttime }}</td>\n        <td> {{ flight.arrivalcity }}</td>\n        <td> {{ flight.endtime }}</td>\n        <td>\n          <button class=\"btn btn-primary\" (click)=\"selectFlight(flight)\">Details</button>\n        </td>\n      </tr>\n    </tbody>\n  </table>\n  <div class=\"card text-center\" *ngIf=\"selectedFlight\">\n      <div class=\"card-header\">\n        ## {{selectedFlight.number}} ##\n      </div>\n      <div class=\"card-block\">\n        <h4 class=\"card-title\">{{selectedFlight.name}}</h4>\n        <p class=\"card-text\">\n          {{selectedFlight.notes}}\n        </p>    \n      </div>\n\n    </div>\n</div>"
 
 /***/ }),
 
@@ -330,11 +345,16 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var FlightListComponent = /** @class */ (function () {
-    function FlightListComponent(dataService) {
-        this.dataService = dataService;
+    function FlightListComponent(dataservice) {
+        this.dataservice = dataservice;
     }
     FlightListComponent.prototype.ngOnInit = function () {
-        this.flights = this.dataService.getFlights();
+        var _this = this;
+        this.dataservice.getFlight()
+            .subscribe(function (data) {
+            _this.flights = data;
+            console.log(data);
+        });
     };
     FlightListComponent.prototype.selectFlight = function (flight) {
         this.selectedFlight = flight;

@@ -1,23 +1,41 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import {Flight} from './flight-list/flight';
+import { HttpHeaders } from '@angular/common/http';
 
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Content-Type':  'application/json',
+    'Authorization': 'my-auth-token'
+  })
+};
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
 
   flights = [
-    {id: 1, name: "Contact 001", description: "Contact 001 des", email: "c001@email.com"},
-    {id: 2, name: "Contact 002", description: "Contact 002 des", email: "c002@email.com"},
-    {id: 3, name: "Contact 003", description: "Contact 003 des", email: "c003@email.com"},
-    {id: 4, name: "Contact 004", description: "Contact 004 des", email: "c004@email.com"}
+    {id: 1, name: "Singapore Airlines",number: "SL317" ,description: "Welcome to Singapore", capacity: 238},
+    
   ];
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
+public getFlight(): Observable<Flight[]>{
+  return this.http.get<Flight[]>('/umbraco/api/flightsdata/getflights');
+}
 
-  public getFlights():Array<{id, name, description, email}>{
-    return this.flights;
+  //public getFlights():Array<{id, name,number, description, capacity}>{
+  //  return this.flights;
+  //}
+  public createFlight (flight: Flight): Observable<Flight> {
+    return this.http.post<Flight>('/umbraco/api/flightsdata/createflight', flight, httpOptions)
+      .pipe(
+       
+      );
   }
-  public createFlight(flight: {id, name, description, email}){
-    this.flights.push(flight);
-  }
+
+
+
 }

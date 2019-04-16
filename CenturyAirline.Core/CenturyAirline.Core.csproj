@@ -225,7 +225,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="API\CustomData.cs" />
+    <Compile Include="API\FlightsData.cs" />
     <Compile Include="Class1.cs" />
     <Compile Include="DocumentTypes\Article.generated.cs" />
     <Compile Include="DocumentTypes\File.generated.cs" />
@@ -235,6 +235,7 @@
     <Compile Include="DocumentTypes\Image.generated.cs" />
     <Compile Include="DocumentTypes\Login.generated.cs" />
     <Compile Include="DocumentTypes\Member.generated.cs" />
+    <Compile Include="Models\FlightModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

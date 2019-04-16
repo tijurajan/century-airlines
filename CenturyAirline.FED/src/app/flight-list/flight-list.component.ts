@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
+import { HttpClient } from '@angular/common/http';
+import {Flight} from './flight'
+
+
 
 @Component({
   selector: 'app-flight-list',
@@ -8,13 +12,19 @@ import { DataService } from '../data.service';
 })
 export class FlightListComponent implements OnInit {
 
-  flights;
+  flights: Flight[];
+ 
   selectedFlight;
 
-  constructor(public dataService: DataService) { }
+  constructor(private dataservice: DataService) { }
 
-  ngOnInit() {
-    this.flights = this.dataService.getFlights();    
+  ngOnInit(): void  {
+    this.dataservice.getFlight()
+    .subscribe(
+     (data : any[]) =>{ this.flights = data;
+      console.log(data)
+    
+  });   
   }
   public selectFlight(flight){
     this.selectedFlight = flight;

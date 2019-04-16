@@ -5,7 +5,10 @@ using System.Web.Mvc;
 using System.Web.Security;
 using Umbraco.Web.Mvc;
 using CenturyAirline.Models;
+using Umbraco.Core;
+using Umbraco.Core.Models;
 using Umbraco.Core.Services;
+using Umbraco.Core.Persistence.Querying;
 
 namespace CenturyAirline.Controllers
 {
@@ -34,6 +37,9 @@ namespace CenturyAirline.Controllers
                     }
                     else
                     {
+                        var memberService = ApplicationContext.Current.Services.MemberService;
+                        var admins = memberService.FindMembersInRole("Admin", model.Username, StringPropertyMatchType.Exact); // add logic to redirect to admin dashboard
+                        var user = Members.GetByUsername(model.Username);
                         return Redirect("/");
                     }
                 }

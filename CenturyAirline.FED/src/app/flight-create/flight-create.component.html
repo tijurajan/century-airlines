@@ -7,23 +7,23 @@
       <div>
         <form>
           <div class="form-group">
-            <label for="id">ID</label>
-            <input [(ngModel)]="flight.id" type="text" name="id" class="form-control" id="id" aria-describedby="idHelp" placeholder="Enter ID">
-            <small id="idHelp" class="form-text text-muted">Enter your contact’s ID</small>
+            <label for="name">Flight Name</label>
+            <input [(ngModel)]="flight.name" type="text" name="name" class="form-control" id="name" aria-describedby="nameHelp" placeholder="Enter flight name">
+            <small id="nameHelp" class="form-text text-muted">Enter your flight name</small>
+            
+            <label for="name">Flight Number</label>
+            <input [(ngModel)]="flight.number" type="text" name="number" class="form-control" id="name" aria-describedby="numberHelp" placeholder="Enter flight number">
+            <small id="numberHelp" class="form-text text-muted">Enter your flight number</small>
+           
+            <label for="email">Passenger Capacity</label>
+            <input [(ngModel)]="flight.email" type="number" name="capacity" class="form-control" id="capacity" aria-describedby="capacityHelp"
+              placeholder="Enter passenger capacity">
+            <small id="capacityHelp" class="form-text text-muted">Enter passenger capacity</small>
 
-            <label for="name">Contact Name</label>
-            <input [(ngModel)]="flight.name" type="text" name="name" class="form-control" id="name" aria-describedby="nameHelp" placeholder="Enter your name">
-            <small id="nameHelp" class="form-text text-muted">Enter your contact’s name</small>
-
-            <label for="email">Contact Email</label>
-            <input [(ngModel)]="flight.email" type="text" name="email" class="form-control" id="email" aria-describedby="emailHelp"
-              placeholder="Enter your email">
-            <small id="nameHelp" class="form-text text-muted">Enter your contact’s email</small>
-
-            <label for="description">Contact Description</label>
+            <label for="description">Flight Description</label>
             <textarea [(ngModel)]="flight.description" name="description" class="form-control" id="description" aria-describedby="descHelp">
                       </textarea>
-            <small id="descHelp" class="form-text text-muted">Enter your contact’s description</small>
+            <small id="descHelp" class="form-text text-muted">Enter your flight description</small>
 
           </div>
         </form>

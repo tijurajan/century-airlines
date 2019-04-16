@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
+import { from } from 'rxjs';
 
 @Component({
   selector: 'app-flight-create',
@@ -8,7 +9,8 @@ import { DataService } from '../data.service';
 })
 export class FlightCreateComponent implements OnInit {
 
-  flight : {id, name, description, email} = {id: null, name: "", description: "", email: ""};
+  departurecities: null;
+  flight : {id, name,number, description, capacity, departurecity, arrivalcity, starttime, endtime } = {id: null, name: "", number:"", description: "", capacity: null, departurecity: "", arrivalcity: "", starttime:"", endtime :""};
 
   constructor(public dataService: DataService) { }
 
@@ -17,8 +19,10 @@ export class FlightCreateComponent implements OnInit {
 
   createFlight(){
     console.log(this.flight);
-    this.dataService.createFlight(this.flight);
-    this.flight = {id: null, name: "", description: "", email: ""};
+    this.dataService.createFlight(this.flight)
+    .subscribe(x=> console.log(x));
+
+    this.flight = {id: null, name: "", number:"", description: "", capacity: null, departurecity: "", arrivalcity: "", starttime:"", endtime :""};
 
   }
 }
