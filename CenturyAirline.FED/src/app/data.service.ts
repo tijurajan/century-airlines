@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {Flight} from './flight-list/flight';
+import {Booking} from './flight-list/booking';
 import { HttpHeaders } from '@angular/common/http';
 
 import { Observable } from 'rxjs';
@@ -31,6 +32,13 @@ public getFlight(): Observable<Flight[]>{
   //}
   public createFlight (flight: Flight): Observable<Flight> {
     return this.http.post<Flight>('/umbraco/api/flightsdata/createflight', flight, httpOptions)
+      .pipe(
+       
+      );
+  }
+
+  public createBooking (booking: Booking): Observable<Booking> {
+       return this.http.post<Booking>('/umbraco/api/flightsdata/CreateBooking', booking, httpOptions)
       .pipe(
        
       );

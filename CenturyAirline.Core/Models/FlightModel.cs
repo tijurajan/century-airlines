@@ -11,9 +11,15 @@ namespace CenturyAirline.Core.Models
         public string id { get; set; }
         public string name { get; set; }
          public string number { get; set; }
-        public string description { get; set; }
+        
         public int capacity { get; set; }
         
-        public string email { get; set; }
+        public string starttime { get; set; }
+
+        public string endtime { get; set; }
+
+        public string departurecity { get; set; }
+
+        public string arrivalcity { get; set; }
     }
 }

@@ -225,6 +225,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\BookingModel.cs" />
     <Compile Include="API\FlightsData.cs" />
     <Compile Include="Class1.cs" />
     <Compile Include="DocumentTypes\Article.generated.cs" />

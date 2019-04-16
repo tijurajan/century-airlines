@@ -38,9 +38,19 @@ namespace CenturyAirline.Controllers
                     else
                     {
                         var memberService = ApplicationContext.Current.Services.MemberService;
-                        var admins = memberService.FindMembersInRole("Admin", model.Username, StringPropertyMatchType.Exact); // add logic to redirect to admin dashboard
-                        var user = Members.GetByUsername(model.Username);
-                        return Redirect("/");
+                        var admins = memberService.FindMembersInRole("Admin", model.Username, StringPropertyMatchType.Contains); // add logic to redirect to admin dashboard
+                        if (admins.Count() > 0)
+                        {
+                            return Redirect("/");
+                        }
+                        else
+                        {
+                            return Redirect("/user-portal");
+                        }
+
+
+                        
+                        
                     }
                 }
                 else

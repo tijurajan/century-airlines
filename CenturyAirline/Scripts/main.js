@@ -85,7 +85,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<app-header></app-header>\n<router-outlet></router-outlet>\n\n<app-footer></app-footer>\n"
+module.exports = "<app-header></app-header>\r\n<router-outlet></router-outlet>\r\n\r\n<app-footer></app-footer>\r\n"
 
 /***/ }),
 
@@ -144,6 +144,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _header_header_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./header/header.component */ "./src/app/header/header.component.ts");
 /* harmony import */ var _footer_footer_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./footer/footer.component */ "./src/app/footer/footer.component.ts");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm5/ng-bootstrap.js");
+
 
 
 
@@ -173,6 +175,7 @@ var AppModule = /** @class */ (function () {
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
                 _app_routing_module__WEBPACK_IMPORTED_MODULE_5__["AppRoutingModule"],
+                _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_13__["NgbModule"],
                 _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormsModule"],
                 _angular_common_http__WEBPACK_IMPORTED_MODULE_12__["HttpClientModule"]
             ],
@@ -227,6 +230,10 @@ var DataService = /** @class */ (function () {
         return this.http.post('/umbraco/api/flightsdata/createflight', flight, httpOptions)
             .pipe();
     };
+    DataService.prototype.createBooking = function (booking) {
+        return this.http.post('/umbraco/api/flightsdata/CreateBooking', booking, httpOptions)
+            .pipe();
+    };
     DataService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
             providedIn: 'root'
@@ -258,7 +265,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\" style=\"margin-top: 70px;\">\n\n  <div class=\"row\">\n\n    <div class=\"col-sm-8 offset-sm-2\">\n\n      <div>\n        <form>\n          <div class=\"form-group\">\n            <label for=\"id\">ID</label>\n            <input [(ngModel)]=\"flight.id\" type=\"text\" name=\"id\" class=\"form-control\" id=\"id\" aria-describedby=\"idHelp\" placeholder=\"Enter ID\">\n            <small id=\"idHelp\" class=\"form-text text-muted\">Enter your flight ID</small>\n\n            <label for=\"name\">Flight Name</label>\n            <input [(ngModel)]=\"flight.name\" type=\"text\" name=\"name\" class=\"form-control\" id=\"name\" aria-describedby=\"nameHelp\" placeholder=\"Enter flight name\">\n            <small id=\"nameHelp\" class=\"form-text text-muted\">Enter your flight name</small>\n            \n            <label for=\"name\">Flight Number</label>\n            <input [(ngModel)]=\"flight.number\" type=\"text\" name=\"number\" class=\"form-control\" id=\"name\" aria-describedby=\"numberHelp\" placeholder=\"Enter flight number\">\n            <small id=\"numberHelp\" class=\"form-text text-muted\">Enter your flight number</small>\n           \n            <label for=\"email\">Passenger Capacity</label>\n            <input [(ngModel)]=\"flight.email\" type=\"number\" name=\"capacity\" class=\"form-control\" id=\"capacity\" aria-describedby=\"capacityHelp\"\n              placeholder=\"Enter passenger capacity\">\n            <small id=\"capacityHelp\" class=\"form-text text-muted\">Enter passenger capacity</small>\n\n            <label for=\"description\">Flight Description</label>\n            <textarea [(ngModel)]=\"flight.description\" name=\"description\" class=\"form-control\" id=\"description\" aria-describedby=\"descHelp\">\n                      </textarea>\n            <small id=\"descHelp\" class=\"form-text text-muted\">Enter your flight description</small>\n\n          </div>\n        </form>\n        <button class=\"btn btn-primary\" (click)=\"createFlight()\">Create flight</button>\n      </div>\n    </div>\n  </div>\n</div>\n"
+module.exports = "<div class=\"container\" style=\"margin-top: 70px;\">\r\n\r\n  <div class=\"row\">\r\n\r\n    <div class=\"col-sm-8 offset-sm-2\">\r\n\r\n      <div>\r\n        <form>\r\n          <div class=\"form-group\">\r\n          \r\n          \r\n            <label for=\"name\">Flight Name</label>\r\n            <input [(ngModel)]=\"flight.name\" type=\"text\" name=\"name\" class=\"form-control\" id=\"name\" aria-describedby=\"nameHelp\" placeholder=\"Enter flight name\">\r\n           \r\n            \r\n            <label for=\"name\">Flight Number</label>\r\n            <input [(ngModel)]=\"flight.number\" type=\"text\" name=\"number\" class=\"form-control\" id=\"name\" aria-describedby=\"numberHelp\" placeholder=\"Enter flight number\">\r\n           \r\n           \r\n            <label for=\"email\">Passenger Capacity</label>\r\n            <input [(ngModel)]=\"flight.capacity\" type=\"number\" name=\"capacity\" class=\"form-control\" id=\"capacity\" aria-describedby=\"capacityHelp\"\r\n              placeholder=\"Enter passenger capacity\">\r\n            \r\n\r\n            \r\n\r\n            <label for=\"name\">Departure City</label>\r\n            <input [(ngModel)]=\"flight.departurecity\" type=\"text\" name=\"departureCity\" class=\"form-control\" id=\"departureCity\" aria-describedby=\"departureCityHelp\" placeholder=\"Enter Departure City\">\r\n            <div class=\"form-group\" style=\"padding-top: 20px;\">\r\n                <div class=\"input-group\">\r\n           \r\n                <label for=\"startTime\">Flight Start Time</label>\r\n                <input class=\"form-control\" placeholder=\"yyyy-mm-dd\"\r\n                       name=\"startTime\" [(ngModel)]=\"flight.starttime\" ngbDatepicker #d=\"ngbDatepicker\">\r\n                <div class=\"input-group-append\">\r\n                  <button class=\"btn btn-outline-secondary calendar\" (click)=\"d.toggle()\" type=\"button\"></button>\r\n                </div>\r\n              </div>\r\n            </div>\r\n            <label for=\"name\">Arrival City</label>\r\n            <input [(ngModel)]=\"flight.arrivalcity\" type=\"text\" name=\"arrivalCity\" class=\"form-control\" id=\"arrivalCity\" aria-describedby=\"arrivalCityHelp\" placeholder=\"Enter Arrival City\">\r\n            \r\n\r\n            <div class=\"form-group\" style=\"padding-top: 20px;\">\r\n                <div class=\"input-group\">\r\n                  <label for=\"endTime\">Flight End Time</label>\r\n                  <input class=\"form-control\" placeholder=\"yyyy-mm-dd\"\r\n                         name=\"endTime\" [(ngModel)]=\"flight.endTime\" ngbDatepicker #d=\"ngbDatepicker\">\r\n                  <div class=\"input-group-append\">\r\n                    <button class=\"btn btn-outline-secondary calendar\" (click)=\"d.toggle()\" type=\"button\"></button>\r\n                  </div>\r\n                </div>\r\n              </div>\r\n\r\n\r\n              <label for=\"description\">Flight Description</label>\r\n              <textarea [(ngModel)]=\"flight.description\" name=\"description\" class=\"form-control\" id=\"description\" aria-describedby=\"descHelp\">\r\n                        </textarea>\r\n              <small id=\"descHelp\" class=\"form-text text-muted\">Enter your flight description</small>\r\n\r\n          </div>\r\n        </form>\r\n        <button class=\"btn btn-primary\" (click)=\"createFlight()\">Create flight</button>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>\r\n<style>\r\n    /* Datepicker popup icon */\r\n\r\nbutton.calendar, button.calendar:active {\r\n  width: 2.75rem;\r\n  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACIAAAAcCAYAAAAEN20fAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAEUSURBVEiJ7ZQxToVAEIY/YCHGxN6XGOIpnpaEsBSeQC9ArZbm9TZ6ADyBNzAhQGGl8Riv4BLAWAgmkpBYkH1b8FWT2WK/zJ8ZJ4qiI6XUI3ANnGKWBnht2/ZBDRK3hgVGNsCd7/ui+JkEIrKtqurLpEWaphd933+IyI3LEIdpCYCiKD6HcuOa/nwOa0ScJEnk0BJg0UTUWJRl6RxCYEzEmomsIlPU3IPW+grIAbquy+q6fluy/28RIBeRMwDXdXMgXLj/B2uimRXpui4D9sBeRLKl+1N+L+t6RwbWrZliTTTr1oxYtzVWiTQAcRxvTX+eJMnlUDaO1vpZRO5NS0x48sIwfPc87xg4B04MCzQi8hIEwe4bl1DnFMCN2zsAAAAASUVORK5CYII=') !important;\r\n  background-repeat: no-repeat;\r\n  background-size: 23px;\r\n  background-position: center;\r\n}\r\n\r\n/* Sortable table demo */\r\n\r\nth[sortable] {\r\n  cursor: pointer;\r\n  user-select: none;\r\n  -webkit-user-select: none;\r\n}\r\n\r\nth[sortable].desc:before, th[sortable].asc:before {\r\n  content: '';\r\n  display: block;\r\n  background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAAXNSR0IArs4c6QAAAmxJREFUeAHtmksrRVEUx72fH8CIGQNJkpGUUmakDEiZSJRIZsRQmCkTJRmZmJgQE0kpX0D5DJKJgff7v+ru2u3O3vvc67TOvsdatdrnnP1Y///v7HvvubdbUiIhBISAEBACQkAICAEhIAQ4CXSh2DnyDfmCPEG2Iv9F9MPlM/LHyAecdyMzHYNwR3fdNK/OH9HXl1UCozD24TCvILxizEDWIEzA0FcM8woCgRrJCoS5PIwrANQSMAJX1LEI9bqpQo4JYNFFKRSvIgsxHDVnqZgIkPnNBM0rIGtYk9YOOsqgbgepRCfdbmFtqhFkVEDVPjJp0+Z6e6hRHhqBKgg6ZDCvYBygVmUoEGoh5JTRvIJwhJo1aUOoh4CLPMyvxxi7EWOMgnCGsXXI1GIXlZUYX7ucU+kbR8NW8lh3O7cue0Pk32MKndfUxQFAwxdirk3fHappAnc0oqDPzDfGTBrCfHP04dM4oTV8cxr0SVzH9FF07xD3ib6xCDE+M+aUcVygtWzzbtGX2rPBrEUYfecfQkaFzYi6HjVnGBdtL7epqAlc1+jRdAap74RrnPc4BCijttY2tRcdN0g17w7HqZrXhdJTYAuS3hd8z+vKgK3V1zWPae0mZDMykadBn1hTQBLnZNwVrJpSe/NwEeDsEwCctEOsJTsgxLvCqUl2ACftEGvJDgjxrnBqkh3ASTvEWrIDQrwrnJpkB3DSDrGW7IAQ7wqnJtkBnLRztejXXVu4+mxz/nQ9jR1w5VB86ejLTFcnnDwhzV+F6T+CHZlx6THSjn76eyyBIOPHyDakhBAQAkJACAgBISAEhIAQYCLwC8JxpAmsEGt6AAAAAElFTkSuQmCC') no-repeat;\r\n  background-size: 22px;\r\n  width: 22px;\r\n  height: 22px;\r\n  float: left;\r\n  margin-left: -22px;\r\n}\r\n\r\nth[sortable].desc:before {\r\n  transform: rotate(180deg);\r\n  -ms-transform: rotate(180deg);\r\n}\r\n\r\n/* Filtering table demo */\r\nngbd-table-filtering span.ngb-highlight {\r\n  background-color: yellow;\r\n}\r\n\r\n/* Complete table demo */\r\nngbd-table-complete span.ngb-highlight {\r\n  background-color: yellow;\r\n}\r\n\r\n  </style>\r\n\r\n"
 
 /***/ }),
 
@@ -281,7 +288,7 @@ __webpack_require__.r(__webpack_exports__);
 var FlightCreateComponent = /** @class */ (function () {
     function FlightCreateComponent(dataService) {
         this.dataService = dataService;
-        this.flight = { id: null, name: "", number: "", description: "", capacity: null };
+        this.flight = { id: null, name: "", number: "", description: "", capacity: null, departurecity: "", arrivalcity: "", starttime: "", endtime: "" };
     }
     FlightCreateComponent.prototype.ngOnInit = function () {
     };
@@ -289,7 +296,7 @@ var FlightCreateComponent = /** @class */ (function () {
         console.log(this.flight);
         this.dataService.createFlight(this.flight)
             .subscribe(function (x) { return console.log(x); });
-        this.flight = { id: null, name: "", number: "", description: "", capacity: null };
+        this.flight = { id: null, name: "", number: "", description: "", capacity: null, departurecity: "", arrivalcity: "", starttime: "", endtime: "" };
     };
     FlightCreateComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -324,7 +331,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\" style=\"margin-top: 70px;\">\n  <table class=\"table table-hover\">\n    <thead>\n      <tr>\n        \n        <th>Name</th>\n        <th>Flight No#</th>\n        <th>Capacity</th>\n        <th>From</th>\n        <th>Deprt.</th>\n        <th>To</th>\n        <th>Arr.</th>\n        <th>Actions</th>\n      </tr>\n    </thead>\n    <tbody>\n      <tr *ngFor=\"let flight of flights\">\n\n        <td>{{ flight.name }}</td>\n        <td> {{ flight.number }}</td>\n        <td> {{ flight.capacity }}</td>\n        <td> {{ flight.departurecity }}</td>\n        <td> {{ flight.starttime }}</td>\n        <td> {{ flight.arrivalcity }}</td>\n        <td> {{ flight.endtime }}</td>\n        <td>\n          <button class=\"btn btn-primary\" (click)=\"selectFlight(flight)\">Details</button>\n        </td>\n      </tr>\n    </tbody>\n  </table>\n  <div class=\"card text-center\" *ngIf=\"selectedFlight\">\n      <div class=\"card-header\">\n        ## {{selectedFlight.number}} ##\n      </div>\n      <div class=\"card-block\">\n        <h4 class=\"card-title\">{{selectedFlight.name}}</h4>\n        <p class=\"card-text\">\n          {{selectedFlight.notes}}\n        </p>    \n      </div>\n\n    </div>\n</div>"
+module.exports = "<div class=\"container\" style=\"margin-top: 70px;\">\r\n  <table class=\"table table-hover\">\r\n    <thead>\r\n      <tr>\r\n        \r\n        <th>Name</th>\r\n        <th>Flight No#</th>\r\n        <th>Capacity</th>\r\n        <th>From</th>\r\n        <th>Deprt.</th>\r\n        <th>To</th>\r\n        <th>Arr.</th>\r\n        <th>Actions</th>\r\n      </tr>\r\n    </thead>\r\n    <tbody>\r\n      <tr *ngFor=\"let flight of flights\">\r\n\r\n        <td>{{ flight.name }}</td>\r\n        <td> {{ flight.number }}</td>\r\n        <td> {{ flight.capacity }}</td>\r\n        <td> {{ flight.departurecity }}</td>\r\n        <td> {{ flight.starttime }}</td>\r\n        <td> {{ flight.arrivalcity }}</td>\r\n        <td> {{ flight.endtime }}</td>\r\n        <td>\r\n          <button class=\"btn btn-primary\" (click)=\"selectFlight(flight)\">Book</button>\r\n        </td>\r\n      </tr>\r\n    </tbody>\r\n  </table>\r\n  <div class=\"card text-center\" *ngIf=\"selectedFlight\">\r\n      <div class=\"card-header\">\r\n        ## {{selectedFlight.number}} ##\r\n      </div>\r\n      <div class=\"card-block\">\r\n        <h4 class=\"card-title\">{{selectedFlight.name}}</h4>\r\n        <p class=\"card-text\">\r\n          {{selectedFlight.notes}}\r\n        </p> \r\n        \r\n        <div class=\"container\" style=\"margin-top: 70px;\">\r\n\r\n          <div class=\"row\">\r\n        \r\n            <div class=\"col-sm-8 offset-sm-2\">\r\n        \r\n              <div>\r\n                <form>\r\n                  <div class=\"form-group\">\r\n                     \r\n                    <label for=\"fname\">First Name</label>\r\n                    <input [(ngModel)]=\"booking.firstname\" type=\"text\" name=\"fname\" class=\"form-control\" id=\"fname\" aria-describedby=\"fnameHelp\" placeholder=\"Enter First Name\">\r\n                \r\n                    \r\n                    <label for=\"lname\">Last Name</label>\r\n                    <input [(ngModel)]=\"booking.lastname\" type=\"text\" name=\"lname\" class=\"form-control\" id=\"lname\" aria-describedby=\"lnameHelp\" placeholder=\"Enter Last Name\">\r\n                   \r\n                   \r\n                    <label for=\"passengercount\">Number of passengers</label>\r\n                    <input [(ngModel)]=\"booking.passengercount\" type=\"number\" name=\"passengercount\" class=\"form-control\" id=\"passengercount\" aria-describedby=\"passengercountHelp\"\r\n                      placeholder=\"Enter number of passengers\">\r\n                    \r\n                    \r\n        \r\n                  </div>\r\n                </form>\r\n                <button class=\"btn btn-primary\" (click)=\"createBooking(selectedFlight)\">Book flight</button>\r\n              </div>\r\n            </div>\r\n          </div>\r\n        </div>\r\n\r\n      </div>\r\n\r\n    </div>\r\n</div>"
 
 /***/ }),
 
@@ -347,6 +354,7 @@ __webpack_require__.r(__webpack_exports__);
 var FlightListComponent = /** @class */ (function () {
     function FlightListComponent(dataservice) {
         this.dataservice = dataservice;
+        this.booking = { flight: this.selectedFlight, lastname: "", firstname: "", passengercount: 0 };
     }
     FlightListComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -355,6 +363,13 @@ var FlightListComponent = /** @class */ (function () {
             _this.flights = data;
             console.log(data);
         });
+    };
+    FlightListComponent.prototype.createBooking = function (selectedFlight) {
+        console.log(this.booking);
+        this.booking.flight = selectedFlight;
+        this.dataservice.createBooking(this.booking)
+            .subscribe(function (x) { return console.log(x); });
+        this.booking = { flight: this.selectedFlight, lastname: "", firstname: "", passengercount: 0 };
     };
     FlightListComponent.prototype.selectFlight = function (flight) {
         this.selectedFlight = flight;
@@ -392,7 +407,7 @@ module.exports = "footer {\r\n    position: absolute;\r\n    right: 0;\r\n    bo
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<footer>\n  <p  class=\"text-xs-center\">© Copyright 2019. All rights reserved.</p>\n</footer>"
+module.exports = "<footer>\r\n  <p  class=\"text-xs-center\">© Copyright 2019. All rights reserved.</p>\r\n</footer>"
 
 /***/ }),
 
@@ -448,7 +463,7 @@ module.exports = "\r\n.nav-item{\r\n    padding:2px;\r\n    margin-left: 7px;\r\
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-expand-md bg-dark navbar-dark fixed-top\">\n  <a class=\"navbar-brand\" href=\"#\">Century Airlines</a>\n  <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarCollapse\" aria-controls=\"navbarCollapse\"\n    aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n    <span class=\"navbar-toggler-icon\"></span>\n  </button>\n  <div class=\"collapse navbar-collapse\" id=\"navbarCollapse\">\n    <ul class=\"navbar-nav mr-auto\">\n\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" routerLink=\"/home\">Home</a>\n      </li>\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" routerLink=\"/flight-list\">Flights</a>\n      </li>\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" routerLink=\"/flight-create\">Create</a>\n      </li>\n\n    </ul>\n  </div>\n</nav>\n"
+module.exports = "<nav class=\"navbar navbar-expand-md bg-dark navbar-dark fixed-top\">\r\n  <a class=\"navbar-brand\" href=\"#\">Century Airlines</a>\r\n  <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarCollapse\" aria-controls=\"navbarCollapse\"\r\n    aria-expanded=\"false\" aria-label=\"Toggle navigation\">\r\n    <span class=\"navbar-toggler-icon\"></span>\r\n  </button>\r\n  <div class=\"collapse navbar-collapse\" id=\"navbarCollapse\">\r\n    <ul class=\"navbar-nav mr-auto\">\r\n\r\n      <li class=\"nav-item\">\r\n        <a class=\"nav-link\" routerLink=\"/home\">Home</a>\r\n      </li>\r\n     <li class=\"nav-item\">\r\n        <a class=\"nav-link\" routerLink=\"/flight-list\">Flights</a>\r\n      </li>\r\n     <li class=\"nav-item\">\r\n        <a class=\"nav-link\" routerLink=\"/flight-create\">Create</a>\r\n      </li>\r\n\r\n    </ul>\r\n  </div>\r\n</nav>\r\n"
 
 /***/ }),
 
@@ -504,7 +519,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"jumbotron\" style=\"background-color: #fff; height: calc(95vh);\">\n  <h1>Admin Dashboard</h1>\n  <p class=\"lead\">\n    Welcome to Century Airlines booking system \n  </p>\n  <a class=\"btn btn-lg btn-primary\" href=\"\" role=\"button\">Source code</a>\n</div>\n"
+module.exports = "<div class=\"jumbotron\" style=\"background-color: #fff; height: calc(95vh);\">\r\n  <h1>Dashboard</h1>\r\n  <p class=\"lead\">\r\n    Welcome to Century Airlines booking system \r\n  </p>\r\n  <a class=\"btn btn-lg btn-primary\" href=\"\" role=\"button\">Source code</a>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -603,7 +618,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\tiju.rajanabraham\source\Repos\Angular\century-airlines\CenturyAirline.FED\src\main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! C:\Users\Tiju.RajanAbraham\source\repos\century-airlines\CenturyAirline.FED\src\main.ts */"./src/main.ts");
 
 
 /***/ })

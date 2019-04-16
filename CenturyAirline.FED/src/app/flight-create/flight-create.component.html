@@ -7,23 +7,56 @@
       <div>
         <form>
           <div class="form-group">
+          
+          
             <label for="name">Flight Name</label>
             <input [(ngModel)]="flight.name" type="text" name="name" class="form-control" id="name" aria-describedby="nameHelp" placeholder="Enter flight name">
-            <small id="nameHelp" class="form-text text-muted">Enter your flight name</small>
+           
             
             <label for="name">Flight Number</label>
             <input [(ngModel)]="flight.number" type="text" name="number" class="form-control" id="name" aria-describedby="numberHelp" placeholder="Enter flight number">
-            <small id="numberHelp" class="form-text text-muted">Enter your flight number</small>
+           
            
             <label for="email">Passenger Capacity</label>
-            <input [(ngModel)]="flight.email" type="number" name="capacity" class="form-control" id="capacity" aria-describedby="capacityHelp"
+            <input [(ngModel)]="flight.capacity" type="number" name="capacity" class="form-control" id="capacity" aria-describedby="capacityHelp"
               placeholder="Enter passenger capacity">
-            <small id="capacityHelp" class="form-text text-muted">Enter passenger capacity</small>
+            
 
-            <label for="description">Flight Description</label>
-            <textarea [(ngModel)]="flight.description" name="description" class="form-control" id="description" aria-describedby="descHelp">
-                      </textarea>
-            <small id="descHelp" class="form-text text-muted">Enter your flight description</small>
+            
+
+            <label for="name">Departure City</label>
+            <input [(ngModel)]="flight.departurecity" type="text" name="departureCity" class="form-control" id="departureCity" aria-describedby="departureCityHelp" placeholder="Enter Departure City">
+            <div class="form-group" style="padding-top: 20px;">
+                <div class="input-group">
+           
+                <label for="startTime">Flight Start Time</label>
+                <input class="form-control" placeholder="yyyy-mm-dd"
+                       name="startTime" [(ngModel)]="flight.starttime" ngbDatepicker #d="ngbDatepicker1">
+                <div class="input-group-append">
+                  <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"></button>
+                </div>
+              </div>
+            </div>
+            <label for="name">Arrival City</label>
+            <input [(ngModel)]="flight.arrivalcity" type="text" name="arrivalCity" class="form-control" id="arrivalCity" aria-describedby="arrivalCityHelp" placeholder="Enter Arrival City">
+            
+
+            <div class="form-group" style="padding-top: 20px;">
+                <div class="input-group">
+                  <label for="endTime">Flight End Time</label>
+                  <input class="form-control" placeholder="yyyy-mm-dd"
+                         name="endTime" [(ngModel)]="flight.endtime" ngbDatepicker #d="ngbDatepicker2">
+                  <div class="input-group-append">
+                    <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"></button>
+                  </div>
+                </div>
+              </div>
+
+
+              <label for="description">Flight Description</label>
+              <textarea [(ngModel)]="flight.description" name="description" class="form-control" id="description" aria-describedby="descHelp">
+                        </textarea>
+              <small id="descHelp" class="form-text text-muted">Enter your flight description</small>
 
           </div>
         </form>
@@ -32,3 +65,50 @@
     </div>
   </div>
 </div>
+<style>
+    /* Datepicker popup icon */
+
+button.calendar, button.calendar:active {
+  width: 2.75rem;
+  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACIAAAAcCAYAAAAEN20fAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAEUSURBVEiJ7ZQxToVAEIY/YCHGxN6XGOIpnpaEsBSeQC9ArZbm9TZ6ADyBNzAhQGGl8Riv4BLAWAgmkpBYkH1b8FWT2WK/zJ8ZJ4qiI6XUI3ANnGKWBnht2/ZBDRK3hgVGNsCd7/ui+JkEIrKtqurLpEWaphd933+IyI3LEIdpCYCiKD6HcuOa/nwOa0ScJEnk0BJg0UTUWJRl6RxCYEzEmomsIlPU3IPW+grIAbquy+q6fluy/28RIBeRMwDXdXMgXLj/B2uimRXpui4D9sBeRLKl+1N+L+t6RwbWrZliTTTr1oxYtzVWiTQAcRxvTX+eJMnlUDaO1vpZRO5NS0x48sIwfPc87xg4B04MCzQi8hIEwe4bl1DnFMCN2zsAAAAASUVORK5CYII=') !important;
+  background-repeat: no-repeat;
+  background-size: 23px;
+  background-position: center;
+}
+
+/* Sortable table demo */
+
+th[sortable] {
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+th[sortable].desc:before, th[sortable].asc:before {
+  content: '';
+  display: block;
+  background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAAXNSR0IArs4c6QAAAmxJREFUeAHtmksrRVEUx72fH8CIGQNJkpGUUmakDEiZSJRIZsRQmCkTJRmZmJgQE0kpX0D5DJKJgff7v+ru2u3O3vvc67TOvsdatdrnnP1Y///v7HvvubdbUiIhBISAEBACQkAICAEhIAQ4CXSh2DnyDfmCPEG2Iv9F9MPlM/LHyAecdyMzHYNwR3fdNK/OH9HXl1UCozD24TCvILxizEDWIEzA0FcM8woCgRrJCoS5PIwrANQSMAJX1LEI9bqpQo4JYNFFKRSvIgsxHDVnqZgIkPnNBM0rIGtYk9YOOsqgbgepRCfdbmFtqhFkVEDVPjJp0+Z6e6hRHhqBKgg6ZDCvYBygVmUoEGoh5JTRvIJwhJo1aUOoh4CLPMyvxxi7EWOMgnCGsXXI1GIXlZUYX7ucU+kbR8NW8lh3O7cue0Pk32MKndfUxQFAwxdirk3fHappAnc0oqDPzDfGTBrCfHP04dM4oTV8cxr0SVzH9FF07xD3ib6xCDE+M+aUcVygtWzzbtGX2rPBrEUYfecfQkaFzYi6HjVnGBdtL7epqAlc1+jRdAap74RrnPc4BCijttY2tRcdN0g17w7HqZrXhdJTYAuS3hd8z+vKgK3V1zWPae0mZDMykadBn1hTQBLnZNwVrJpSe/NwEeDsEwCctEOsJTsgxLvCqUl2ACftEGvJDgjxrnBqkh3ASTvEWrIDQrwrnJpkB3DSDrGW7IAQ7wqnJtkBnLRztejXXVu4+mxz/nQ9jR1w5VB86ejLTFcnnDwhzV+F6T+CHZlx6THSjn76eyyBIOPHyDakhBAQAkJACAgBISAEhIAQYCLwC8JxpAmsEGt6AAAAAElFTkSuQmCC') no-repeat;
+  background-size: 22px;
+  width: 22px;
+  height: 22px;
+  float: left;
+  margin-left: -22px;
+}
+
+th[sortable].desc:before {
+  transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+}
+
+/* Filtering table demo */
+ngbd-table-filtering span.ngb-highlight {
+  background-color: yellow;
+}
+
+/* Complete table demo */
+ngbd-table-complete span.ngb-highlight {
+  background-color: yellow;
+}
+
+  </style>
+

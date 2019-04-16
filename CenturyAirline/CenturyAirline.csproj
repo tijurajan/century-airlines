@@ -286,11 +286,12 @@
     <Content Include="Views\Partials\Grid\Bootstrap3-Fluid.cshtml" />
     <Content Include="Views\Partials\Grid\Bootstrap2.cshtml" />
     <Content Include="Views\Partials\Grid\Bootstrap2-Fluid.cshtml" />
-    <Content Include="Views\Article.cshtml" />
     <Content Include="Views\Partials\_Login.cshtml" />
     <Content Include="Views\Partials\_Logout.cshtml" />
     <Content Include="Views\Login.cshtml" />
     <Content Include="Views\master.cshtml" />
+    <Content Include="Views\Admin.cshtml" />
+    <Content Include="Views\UserPortal.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

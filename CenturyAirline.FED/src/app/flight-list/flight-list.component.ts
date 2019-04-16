@@ -13,8 +13,9 @@ import {Flight} from './flight'
 export class FlightListComponent implements OnInit {
 
   flights: Flight[];
- 
   selectedFlight;
+  booking: {flight,lastname, firstname, passengercount} = {flight:this.selectedFlight,lastname:"",firstname:"",passengercount:0};
+  
 
   constructor(private dataservice: DataService) { }
 
@@ -26,7 +27,17 @@ export class FlightListComponent implements OnInit {
     
   });   
   }
+
+  createBooking(selectedFlight){
+    console.log(this.booking);
+    this.booking.flight = selectedFlight;
+    this.dataservice.createBooking(this.booking)
+    .subscribe(x=> console.log(x));
+    this.booking = {flight:this.selectedFlight,lastname:"",firstname:"",passengercount:0};
+  }
+
   public selectFlight(flight){
     this.selectedFlight = flight;
   }
+  
 }
