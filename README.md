@@ -1,5 +1,5 @@
 # century-airlines
-century-airlines-  Umbraco Backend &amp; Angular(2+) 6 Frontend
+century-airlines-  Umbraco Backend &amp; Angular(2+) 7 Frontend
 
 Project Structure
 
