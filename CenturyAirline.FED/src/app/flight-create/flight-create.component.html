@@ -26,14 +26,15 @@
 
             <label for="name">Departure City</label>
             <input [(ngModel)]="flight.departurecity" type="text" name="departureCity" class="form-control" id="departureCity" aria-describedby="departureCityHelp" placeholder="Enter Departure City">
+            
             <div class="form-group" style="padding-top: 20px;">
                 <div class="input-group">
            
                 <label for="startTime">Flight Start Time</label>
                 <input class="form-control" placeholder="yyyy-mm-dd"
-                       name="startTime" [(ngModel)]="flight.starttime" ngbDatepicker #d="ngbDatepicker1">
+                       name="startTime" [(ngModel)]="flight.starttime" ngbDatepicker #d1="ngbDatepicker">
                 <div class="input-group-append">
-                  <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"></button>
+                  <button class="btn btn-outline-secondary calendar" (click)="d1.toggle()" type="button"></button>
                 </div>
               </div>
             </div>
@@ -45,9 +46,9 @@
                 <div class="input-group">
                   <label for="endTime">Flight End Time</label>
                   <input class="form-control" placeholder="yyyy-mm-dd"
-                         name="endTime" [(ngModel)]="flight.endtime" ngbDatepicker #d="ngbDatepicker2">
+                         name="endTime" [(ngModel)]="flight.endtime" ngbDatepicker #d2="ngbDatepicker">
                   <div class="input-group-append">
-                    <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"></button>
+                    <button class="btn btn-outline-secondary calendar" (click)="d2.toggle()" type="button"></button>
                   </div>
                 </div>
               </div>
