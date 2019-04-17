@@ -10,17 +10,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Century Airlines</title>
+    <!-- bootstrap css -->
+    <link href="~/css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+
+        a {
+            cursor: pointer
+        }
+    </style>
 </head>
 <body>
-    @{ Html.RenderAction("RenderLogin", "Auth"); }
-    <hr />
+    @*@{ Html.RenderAction("RenderLogin", "Auth"); }
+    <hr />*@
     @RenderBody()
-    <script type="text/javascript" src="Scripts/runtime.js"></script>
-    <script type="text/javascript" src="Scripts/es2015-polyfills.js" nomodule></script>
-    <script type="text/javascript" src="Scripts/polyfills.js"></script>
-    <script type="text/javascript" src="Scripts/styles.js"></script>
-    <script type="text/javascript" src="Scripts/scripts.js"></script>
-    <script type="text/javascript" src="Scripts/vendor.js"></script>
+
+    <script type="text/javascript" src="Scripts/runtime~main.js"></script>
+    <script type="text/javascript" src="Scripts/vendors~main.js"></script>
     <script type="text/javascript" src="Scripts/main.js"></script>
     @* <link rel="stylesheet" href="~/css/main.min.css" />*@
 </body>

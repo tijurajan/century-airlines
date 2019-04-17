@@ -1,0 +1,77 @@
+<div class="container" style="margin-top: 70px;">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        
+        <th>Name</th>
+        <th>Flight No#</th>
+        <th>Capacity</th>
+        <th>From</th>
+        <th>Deprt.</th>
+        <th>To</th>
+        <th>Arr.</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let flight of flights">
+
+        <td>{{ flight.name }}</td>
+        <td> {{ flight.number }}</td>
+        <td> {{ flight.capacity }}</td>
+        <td> {{ flight.departurecity }}</td>
+        <td> {{ flight.starttime }}</td>
+        <td> {{ flight.arrivalcity }}</td>
+        <td> {{ flight.endtime }}</td>
+        <td>
+          <button class="btn btn-primary" (click)="selectFlight(flight)">Book</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="card text-center" *ngIf="selectedFlight">
+      <div class="card-header">
+        ## {{selectedFlight.number}} ##
+      </div>
+      <div class="card-block">
+        <h4 class="card-title">{{selectedFlight.name}}</h4>
+        <p class="card-text">
+          {{selectedFlight.notes}}
+        </p> 
+        
+        <div class="container" style="margin-top: 70px;">
+
+          <div class="row">
+        
+            <div class="col-sm-8 offset-sm-2">
+        
+              <div>
+                <form>
+                  <div class="form-group">
+                     
+                    <label for="fname">First Name</label>
+                    <input [(ngModel)]="booking.firstname" type="text" name="fname" class="form-control" id="fname" aria-describedby="fnameHelp" placeholder="Enter First Name">
+                
+                    
+                    <label for="lname">Last Name</label>
+                    <input [(ngModel)]="booking.lastname" type="text" name="lname" class="form-control" id="lname" aria-describedby="lnameHelp" placeholder="Enter Last Name">
+                   
+                   
+                    <label for="passengercount">Number of passengers</label>
+                    <input [(ngModel)]="booking.passengercount" type="number" name="passengercount" class="form-control" id="passengercount" aria-describedby="passengercountHelp"
+                      placeholder="Enter number of passengers">
+                    
+                    
+        
+                  </div>
+                </form>
+                <button class="btn btn-primary" (click)="createBooking(selectedFlight)">Book flight</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+</div>

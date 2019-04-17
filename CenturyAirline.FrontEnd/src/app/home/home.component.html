@@ -1,0 +1,17 @@
+﻿<h1>Home</h1>
+<p>You're logged in with Angular 7 & JWT!!</p>
+<p>Your role is: <strong>{{currentUser.role}}</strong>.</p>
+<p>This page can be accessed by all authenticated users.</p>
+<div class="jumbotron" style="background-color: #fff; height: calc(95vh);">
+    <h1>Dashboard</h1>
+    <p class="lead">
+      Welcome to Century Airlines booking system 
+    </p>
+    <a class="btn btn-lg btn-primary" href="" role="button">Source code</a>
+  </div>
+<div>
+    Current user from secure api end point:
+    <ul>
+        <li *ngIf="userFromApi">{{userFromApi.firstName}} {{userFromApi.lastName}}</li>
+    </ul>
+</div>

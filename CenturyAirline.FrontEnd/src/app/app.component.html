@@ -1,0 +1,31 @@
+﻿<!-- nav -->
+<nav class="navbar navbar-expand navbar-dark bg-dark" *ngIf="currentUser">
+    <div class="navbar-nav">
+        <a class="nav-item nav-link" routerLink="/">Home</a>
+        <a class="nav-item nav-link" routerLink="/admin" *ngIf="isAdmin">Admin</a>
+        <a class="nav-item nav-link" routerLink="/flight-list">Flight List</a>
+        <a class="nav-item nav-link" routerLink="/flight-create" *ngIf="isAdmin">Create Flight</a>
+        <a class="nav-item nav-link" (click)="logout()">Logout</a>
+    </div>
+</nav>
+
+<!-- main app container -->
+<div class="jumbotron">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 ">
+                <router-outlet></router-outlet>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- credits -->
+<div class="text-center">
+    <p>
+        © Copyright 2019. All rights reserved.
+    </p>
+    <p>
+        <a href="https://www.tijuondevbench.com/" target="_top">tijuondevbench.com</a>
+    </p>
+</div>

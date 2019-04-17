@@ -8,8 +8,10 @@ import { FlightCreateComponent } from './flight-create/flight-create.component';
 import { FlightListComponent } from './flight-list/flight-list.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
+import {UserProfileModule} from './user-profile/user-profile.module';
 import { HttpClientModule } from '@angular/common/http';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+
 
 @NgModule({
   declarations: [
@@ -24,10 +26,11 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    UserProfileModule,
     NgbModule,
     FormsModule,
     HttpClientModule
-  ],
+  ], 
   providers: [{provide: APP_BASE_HREF, useValue: '/'}],
   bootstrap: [AppComponent]
 })
