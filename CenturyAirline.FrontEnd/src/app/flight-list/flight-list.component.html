@@ -1,10 +1,21 @@
 <div class="container" style="margin-top: 70px;">
+
+  <div>
+    <label>Flight number:
+      <input #flightNumber />
+    </label>
+    <!-- (click) passes input value to add() and then clears the input -->
+      <button (click)="search(flightNumber.value)">
+      search
+    </button>
+  </div>
+
   <table class="table table-hover">
     <thead>
       <tr>
         
         <th>Name</th>
-        <th>Flight No#</th>
+        <th>No#</th>
         <th>Capacity</th>
         <th>From</th>
         <th>Deprt.</th>
@@ -24,7 +35,10 @@
         <td> {{ flight.arrivalcity }}</td>
         <td> {{ flight.endtime }}</td>
         <td>
-          <button class="btn btn-primary" (click)="selectFlight(flight)">Book</button>
+          <button class="btn btn-primary" (click)="selectFlight(flight)">Book</button>         
+        </td>
+        <td>
+          <button class="btn btn-danger"  (click)="delete(flight)" *ngIf="isAdmin">X</button>            
         </td>
       </tr>
     </tbody>
@@ -66,6 +80,7 @@
                   </div>
                 </form>
                 <button class="btn btn-primary" (click)="createBooking(selectedFlight)">Book flight</button>
+                
               </div>
             </div>
           </div>

@@ -56,6 +56,22 @@ namespace CenturyAirline.Core.API
         }
 
         [HttpPost]
+        public bool DeleteFlight([System.Web.Http.FromBody]int id)
+        {
+            try
+            {
+                var contentService = ApplicationContext.Current.Services.ContentService;
+                contentService.Delete(contentService.GetById(id));
+                umbraco.library.RefreshContent();
+                return true;
+            }
+            catch(Exception ex)
+            {
+                return false;
+            }
+        }
+
+        [HttpPost]
         public void CreateBooking([System.Web.Http.FromBody]BookingModel booking)
         { if (booking != null)
             {

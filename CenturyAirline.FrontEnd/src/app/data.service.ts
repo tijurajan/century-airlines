@@ -44,6 +44,14 @@ public getFlight(): Observable<Flight[]>{
       );
   }
 
+  public deleteFlight (flight: Flight): Observable<Flight> {
+    return this.http.post<Flight>('/umbraco/api/flightsdata/DeleteFlight', flight.id, httpOptions)
+   .pipe(
+    
+   );
+}
+
+
 
 
 }
